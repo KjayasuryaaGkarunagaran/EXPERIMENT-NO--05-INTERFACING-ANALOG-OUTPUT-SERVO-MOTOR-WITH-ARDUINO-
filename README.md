@@ -1,12 +1,8 @@
-###  DATE: 
-
-###  NAME: 
-###  ROLL NO :
-###  DEPARTMENT: 
-
-
 # EXPERIMENT NO 05 INTERFACING ANALOG OUTPUT SERVO MOTOR WITH ARDUINO
-
+###  DATE: 22/03/24
+###  NAME: K Jaya suryaa
+###  ROLL NO :212222040060
+###  DEPARTMENT: BE Computer science and engineering
 ### AIM
 To interface an Analog output (servo motor) and modify the angular displacement of the servo using PWM signal .
 COMPONENTS REQUIRED:
@@ -60,6 +56,7 @@ CIRCUIT DIAGRAM
  ![image](https://user-images.githubusercontent.com/36288975/163544618-6eb8a7b5-7f1a-428a-8d9f-fd899b145efb.png)
 
 ### FIGURE 04 CIRCUIT DIAGRAM
+![Screenshot (65)](https://github.com/KjayasuryaaGkarunagaran/EXPERIMENT-NO--05-INTERFACING-ANALOG-OUTPUT-SERVO-MOTOR-WITH-ARDUINO-/assets/119476217/be18da92-4d80-4660-86fd-d482342e7b30)
 
 ### PROCEDURE:
 1.	Connect the circuit as per the circuit diagram 
@@ -74,7 +71,53 @@ CIRCUIT DIAGRAM
 
 
 ### PROGRAM :
- 
+ ```
+#include<Servo.h>
+Servo sr1;
+int pos=0;
+int red=9;
+int green=8;
+void setup()
+{
+  sr1.attach(6);
+  Serial.begin(9600);
+  pinMode(red,OUTPUT);
+  pinMode(green,OUTPUT);
+}
+
+void loop()
+{
+  for(pos=0;pos<=180;pos+=5)
+  {
+    sr1.write(pos);
+    delay(1000);
+    Serial.println(pos);
+    if(pos>=120)
+  	{
+      digitalWrite(red,HIGH);
+      delay(200);
+      digitalWrite(red,LOW);
+      delay(200);
+    }
+  }
+  for(pos=180;pos>=0;pos-=5)
+  {
+    sr1.write(pos);
+    Serial.println(pos);
+    delay(1000);
+    if(pos<=100)
+    {
+      digitalWrite(green,HIGH);
+      delay(200);
+      digitalWrite(green,LOW);
+      delay(200);
+    }
+  }
+}
+```
+### output:
+## semantic diagram:
+![Screenshot (66)](https://github.com/KjayasuryaaGkarunagaran/EXPERIMENT-NO--05-INTERFACING-ANALOG-OUTPUT-SERVO-MOTOR-WITH-ARDUINO-/assets/119476217/252a7f6f-8124-4213-af93-0576166d2573)
 
 
 
